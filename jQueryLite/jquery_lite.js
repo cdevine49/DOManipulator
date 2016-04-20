@@ -47,6 +47,24 @@
     return returnObject;
   };
 
+  root.$l.ajax = function (options) {
+    var request = new XMLHttpRequest();
+
+    if (options.method.toUpperCase() === "GET"){
+      options.url += "?" + toQueryString(options.data);
+    }
+
+    request.open(options.method, options.url, true);
+    request.onload = function (e) {
+      if (request.status === 200) {
+        options.success(request.response);
+      } else {
+        options.error(request.response);
+    };
+
+    request.send(JSON.stringify(options.data));
+  };
+
   var DOMNodeCollection = function (htmlElements) {
     this.htmlElements = htmlElements;
   };
