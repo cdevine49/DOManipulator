@@ -31,15 +31,12 @@
         functions.push(selectors);
       }
     }
-
-
   };
 
   root.$l.extend = function () {
     var args = [].slice.call(arguments);
     var returnObject = {};
     args.forEach(function (obj) {
-      // debugger
       Object.keys(obj).forEach(function(key){
         returnObject[key] = obj[key];
       });
@@ -60,8 +57,8 @@
         options.success(request.response);
       } else {
         options.error(request.response);
+      }
     };
-
     request.send(JSON.stringify(options.data));
   };
 
@@ -154,8 +151,6 @@
     var results = [];
 
     this.forEach(function (el) {
-      // debugger
-      // var parents = [].slice.call(el.parentNode);
       results = results.concat(el.parentNode);
     });
 
@@ -166,7 +161,6 @@
     var nodes = [];
 
     this.forEach(function (el) {
-      // debugger
       var node = [].slice.call(el.querySelectorAll(selector));
       nodes = nodes.concat(node);
     });
@@ -177,7 +171,6 @@
     this.forEach(function (el){
       el.parentNode.removeChild(el);
     });
-    return "sennacy";
   };
 
   DOMNodeCollection.prototype.on = function (events, callback) {
@@ -191,10 +184,6 @@
       el.removeEventListener(events, callback);
     });
   };
-
-
-
-
 
   DOMNodeCollection.prototype.forEach = function (callback) {
     var htmlArray = this.htmlElements;
