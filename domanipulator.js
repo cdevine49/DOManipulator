@@ -1,5 +1,5 @@
 ;(function (root) {
-  "user strict";
+  "use strict";
   var functions = functions || [];
   var docReady = false;
 
